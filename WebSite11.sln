@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite11", "..\..\..\..\..\Diplom\WebSite11", "{30F5369D-43B0-4FDD-BE1F-E6A2B1DA0B6A}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50341"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\Diplom\WebSite11\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50341\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50341"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\Diplom\WebSite11\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50341\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50341"
+		SlnRelativePath = "..\..\..\..\..\Diplom\WebSite11\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30F5369D-43B0-4FDD-BE1F-E6A2B1DA0B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F5369D-43B0-4FDD-BE1F-E6A2B1DA0B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {344B18A0-4D8C-40BB-B31F-AFCF9393A9AC}
+	EndGlobalSection
+EndGlobal

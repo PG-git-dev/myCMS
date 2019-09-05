@@ -1,0 +1,66 @@
+body{
+  margin: 0px;
+  display: block;
+/*  padding: 2em; */
+}
+.wrapper {
+  display: flex;  
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+/*нужно программно иметь возможность менять цвет, т.е. все background (только цвета). Можно подключить палитру или сделать вариант с выбором из предустановленных вариантов цветов (защита от "дизайнеров")*/
+.header {
+  background: #ff6347; 
+}
+
+.footer {
+  background: #90ee90;
+}
+
+.main {
+  text-align: left;
+  background: #00bfff;
+}
+
+.aside-1 {
+  background: #ffd700;
+}
+
+.aside-2 {
+  background: #ff69b4;
+}
+
+/*это выравнивание под разные разрешения*/
+@media all and (min-width: 600px) {
+  .aside { flex: 1 auto; }
+}
+
+@media all and (min-width: 800px) {
+  .main    { flex: 3 0px; }
+  .aside-1 { order: 1; } 
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}
+
+
+/*Это стили от второго варианта*/
+.header2 {
+  background: #262626; 
+}
+
+.footer2 {
+  background: #f0f0f0;
+}
+
+.main2 {
+  text-align: left;
+  background: #d21f1f;
+}
