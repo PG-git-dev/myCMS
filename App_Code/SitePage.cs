@@ -11,10 +11,13 @@ public class SitePage
     public string Name { get; set; }
     public string Favicon { get; set; }
     public int BlocksNumber { get; set; }
+    public string SiteDirName { get; }
 
     public SitePage()
     {
-        
+        int i = 1;
+        this.Name = "MySite" + i;
+        SiteDirName = System.AppDomain.CurrentDomain.BaseDirectory + Name;
 
-     }
+    }
 }

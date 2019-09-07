@@ -11,27 +11,54 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using Omu.Drawing;
+using WebSite11;
 
 public partial class MyPage : System.Web.UI.Page
 {
-     string dirProject =
-        //HttpContext.Current.Server.MapPath()
-        System.AppDomain.CurrentDomain.BaseDirectory+"MySite\\";//директория, где будут располагаться файлы сайта
-    string siteTmplHtml = System.AppDomain.CurrentDomain.BaseDirectory + @"header1.html";//расположение файла сайта HTML по-умолчанию
-    string siteTmplCss = System.AppDomain.CurrentDomain.BaseDirectory + @"style.css";//расположение файла стилей сайта CSS по-умолчанию
-    string fileHtmlPath = System.AppDomain.CurrentDomain.BaseDirectory + "MySite\\MySite.html";
+    public string MainSiteName { get; set; }  //имя сайта, которым будет управлять админка 
+    public string SiteDir {get; set; } //директория, где будут располагаться файлы сайта
+    protected string projectDir = System.AppDomain.CurrentDomain.BaseDirectory;//директория проекта
+    public string FileHtmlPath { get; set; }
+    ////string dirProject =
+    ////System.AppDomain.CurrentDomain.BaseDirectory + siteName + "\\";
+    ////HttpContext.Current.Server.MapPath()
+    //string dirProject =System.AppDomain.CurrentDomain.BaseDirectory+"MySite\\";//директория, где будут располагаться файлы сайта
+    //string siteTmplHtml = System.AppDomain.CurrentDomain.BaseDirectory + @"header1.html";//расположение файла сайта HTML по-умолчанию
+    //string siteTmplCss = System.AppDomain.CurrentDomain.BaseDirectory + @"style.css";//расположение файла стилей сайта CSS по-умолчанию
+    //string fileHtmlPath = System.AppDomain.CurrentDomain.BaseDirectory + "MySite\\MySite.html"; 
 
     protected void Page_Load(object sender, EventArgs e) //загрузка страницы
     {
-        if (!Directory.Exists(dirProject))
-            Directory.CreateDirectory(dirProject);
-        if (!File.Exists(dirProject + @"MySite.html"))//м.б. обрамить try catch ?
-            File.Copy(siteTmplHtml, dirProject + @"MySite.html");
-            //File.Copy(siteTmplHtml, System.AppDomain.CurrentDomain.BaseDirectory + "MySite.html");
-        if (!File.Exists(dirProject + @"Style.css"))
-            File.Copy(siteTmplCss, dirProject + @"Style.css");
-        //TextBox1.Text = GetTitleHtml(dirProject + @"\MySite.html");
-        this.DataBind();
+        #region Здесь была проверка существования каталога сайта и файлов в нём
+        //if (!Directory.Exists(dirProject))
+        //    Directory.CreateDirectory(dirProject);
+        //if (!File.Exists(dirProject + @"MySite.html"))//м.б. обрамить try catch ?
+        //    File.Copy(siteTmplHtml, dirProject + @"MySite.html");
+        //    //File.Copy(siteTmplHtml, System.AppDomain.CurrentDomain.BaseDirectory + "MySite.html");
+        //if (!File.Exists(dirProject + @"Style.css"))
+        //    File.Copy(siteTmplCss, dirProject + @"Style.css");
+        ////TextBox1.Text = GetTitleHtml(dirProject + @"\MySite.html");
+        #endregion
+        if (Request.QueryString["SiteName"] != null)
+        {
+            MainSiteName = Request.QueryString["SiteName"];//получение имени сайта со стартовой страницы (Default.aspx)
+            //string templDir = "MySite_templ";
+            string SiteDir = System.AppDomain.CurrentDomain.BaseDirectory + MainSiteName;
+            ////HttpContext.Current.Server.MapPath()
+            ////System.AppDomain.CurrentDomain.BaseDirectory + "MySite\\";//директория, где будут располагаться файлы сайта
+            //    string siteTmplHtml = System.AppDomain.CurrentDomain.BaseDirectory + @"header1.html";//расположение файла сайта HTML по-умолчанию
+            //    string siteTmplCss = System.AppDomain.CurrentDomain.BaseDirectory + @"style.css";//расположение файла стилей сайта CSS по-умолчанию
+            //    string fileHtmlPath = System.AppDomain.CurrentDomain.BaseDirectory + "MySite\\MySite.html";
+
+            //string siteTmplHtml = System.AppDomain.CurrentDomain.BaseDirectory + templDir + "\\" + @"MySite.html";//расположение файла сайта HTML по-умолчанию
+            //string siteTmplCss = System.AppDomain.CurrentDomain.BaseDirectory + templDir + "\\" + @"style.css";//расположение файла стилей сайта CSS по-умолчанию
+            FileHtmlPath = SiteDir + "\\" + "index.html";
+            this.DataBind();
+        }
+        else
+        {
+            Response.Redirect("~/Default.aspx");
+        }
 
     }
     /*    private string PathHTML()
@@ -61,16 +88,19 @@ public partial class MyPage : System.Web.UI.Page
     }
     public string GetSitePath()//возвращает вызов нового окна с сайтом
     {
+        //MainSiteName = Request.QueryString["SiteName"];
+
         //string str= "window.open('" + dirProject + "\\MySite.html')";
         //return str;
         //Button1.OnClientClick = "window.open('<%#GetSitePath() %>')";
         //return "www.yandex.ru";
+        //FileHtmlPath = SiteDir + "\\" + "index.html";
         string fil;
         //fil = dirProject + "\\MySite1.html";
         //fil = "http://www.yandex.ru";
-        //fil = fileHtmlPath;
-        fil = "MySite\\"+"\\MySite.html";
-        return "window.open('"+fil+"')";
+        //fil = FileHtmlPath;
+        fil = MainSiteName+"\\" + "\\" + "index.html"; 
+        return "window.open('" + fil + "')";
         //return "window.open('" + fileHtmlPath + "')";//посмотреть почему не работает...
 //*****************подумать вообще как отвязать от конкретного файла и папки...  абстрагировать
     }
@@ -125,7 +155,7 @@ public partial class MyPage : System.Web.UI.Page
     {
         HtmlDocument doc = new HtmlDocument();
         //doc.Load(dirProject + @"MySite.html");
-        doc.Load(fileHtmlPath);
+        doc.Load(FileHtmlPath);
         HtmlNode bulText = doc.DocumentNode.SelectSingleNode("//div[@class='banner_text']//ul//li//span[@id='"+ bulletId + "']");
         return bulText.InnerHtml;
     }
@@ -140,7 +170,7 @@ public partial class MyPage : System.Web.UI.Page
     string GetTextFromHtml(string xpath)//получение текста из html-файла
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(fileHtmlPath);
+        doc.Load(FileHtmlPath);
         HtmlNode node = doc.DocumentNode.SelectSingleNode(xpath);
         return node.InnerHtml;
     }
@@ -194,19 +224,19 @@ public partial class MyPage : System.Web.UI.Page
                                                       //xpath - куда в хтмл файле вставить путь к картинке.
     {
         string saveImageDir = @"Images\";
-        if (!Directory.Exists(dirProject + saveImageDir))
-            Directory.CreateDirectory(dirProject + saveImageDir);
+        if (!Directory.Exists(SiteDir + "\\" + saveImageDir))
+            Directory.CreateDirectory(SiteDir + "\\" + saveImageDir);
         if (fileForm.HasFile)
         {
-            string saveImagePath = dirProject + saveImageDir + Server.HtmlEncode(fileForm.FileName);
+            string saveImagePath = SiteDir + "\\" + saveImageDir + Server.HtmlEncode(fileForm.FileName);
             fileForm.SaveAs(saveImagePath);
 
             HtmlDocument doc = new HtmlDocument();
-            doc.Load(fileHtmlPath);
+            doc.Load(FileHtmlPath);
             HtmlNode linkFavIconNode = doc.DocumentNode.SelectSingleNode(xpath);
             //linkFavIconNode.Attributes["href"].Value = saveImagePath;
             linkFavIconNode.Attributes["href"].Value = saveImageDir + Server.HtmlEncode(fileForm.FileName);
-            doc.Save(fileHtmlPath);
+            doc.Save(FileHtmlPath);
         }
     }
     void ChangeImage(FileUpload elementName, string xpath, string htmlAttribName)//изменение картинки; (альтернатива ChangeIcon)
@@ -215,18 +245,18 @@ public partial class MyPage : System.Web.UI.Page
                                                                                  //htmlAttribName - атрибут элемента в HTML-файле, в который нужно вставить путь к картинке;
     {
         string saveImageDir = @"Images\";
-        if (!Directory.Exists(dirProject + saveImageDir))
-            Directory.CreateDirectory(dirProject + saveImageDir);
+        if (!Directory.Exists(SiteDir + "\\" + saveImageDir))
+            Directory.CreateDirectory(SiteDir + "\\" + saveImageDir);
         if (elementName.HasFile)
         {
-            string saveImagePath = dirProject + saveImageDir + Server.HtmlEncode(elementName.FileName);
+            string saveImagePath = SiteDir + "\\" + saveImageDir + Server.HtmlEncode(elementName.FileName);
             elementName.SaveAs(saveImagePath);
 
             HtmlDocument doc = new HtmlDocument();
-            doc.Load(fileHtmlPath);
+            doc.Load(FileHtmlPath);
             HtmlNode elemNode = doc.DocumentNode.SelectSingleNode(xpath);
             elemNode.Attributes[htmlAttribName].Value = saveImageDir + Server.HtmlEncode(elementName.FileName);
-            doc.Save(fileHtmlPath);
+            doc.Save(FileHtmlPath);
         }
     }
 
@@ -262,7 +292,7 @@ public partial class MyPage : System.Web.UI.Page
     void ColorChanger(string xPath)// color - color of block; xPath - block
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(fileHtmlPath);
+        doc.Load(FileHtmlPath);
         HtmlNode node = doc.DocumentNode.SelectSingleNode(xPath);
         if (node.Attributes.AttributesWithName("style").ToString().Equals("display: none; background-color: #f1f1f1"))
             node.SetAttributeValue("style", "display: none; background-color: #ffffff");
@@ -272,12 +302,12 @@ public partial class MyPage : System.Web.UI.Page
             node.SetAttributeValue("style", "display: block; background-color: #ffffff");
         if (node.Attributes.AttributesWithName("style").ToString().Equals("display: block; background-color: #ffffff"))
             node.SetAttributeValue("style", "display: block; background-color: #f1f1f1");
-        doc.Save(fileHtmlPath);
+        doc.Save(FileHtmlPath);
     }//NOT USED NOW
     void SetBlockColor(string xPath, string color)// color - hex-color of block (#xxxxxx); xPath - block
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(fileHtmlPath);
+        doc.Load(FileHtmlPath);
         HtmlNode node = doc.DocumentNode.SelectSingleNode(xPath);
         if (node.Attributes["style"].Value.Equals("display: none; background-color: #f1f1f1"))
             node.SetAttributeValue("style", "display: none; background-color: " + color);
@@ -287,13 +317,13 @@ public partial class MyPage : System.Web.UI.Page
             node.SetAttributeValue("style", "display: block; background-color: " + color);
         if (node.Attributes["style"].Value.Equals("display: block; background-color: #f1f1f1"))
             node.SetAttributeValue("style", "display: block; background-color: " + color);
-        doc.Save(fileHtmlPath);
+        doc.Save(FileHtmlPath);
     }
     void SetBlockColorAndVisibility(string xPath, string color, string sw)// color - hex-color of block (#xxxxxx); xPath - block; 
                                                                             // sw: on - visible, off - invisible;
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(fileHtmlPath);
+        doc.Load(FileHtmlPath);
         HtmlNode node = doc.DocumentNode.SelectSingleNode(xPath);
         if (sw.Equals("on"))
         {
@@ -326,20 +356,20 @@ public partial class MyPage : System.Web.UI.Page
             if (node.Attributes["style"].Value.Equals("display: block; background-color: #f1f1f1"))
                 node.SetAttributeValue("style", "display: none; background-color: " + color);
         }
-        doc.Save(fileHtmlPath);
+        doc.Save(FileHtmlPath);
     }
 
     void BlockVisibility(string xPath, string sw)// xPath - block; 
                                                  // sw: on - visible, off - invisible;
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(fileHtmlPath);//file of the site load
+        doc.Load(FileHtmlPath);//file of the site load
         HtmlNode node = doc.DocumentNode.SelectSingleNode(xPath);
         if (sw=="on")
             node.SetAttributeValue("style", "display: block");
         if (sw=="off")
             node.SetAttributeValue("style", "display: none");
-        doc.Save(fileHtmlPath);
+        doc.Save(FileHtmlPath);
     }
     void BlockVisibility(string fileName, string xPath, string sw)// xPath - block; 
                                                                   // sw: on - visible, off - invisible;
@@ -373,7 +403,7 @@ public partial class MyPage : System.Web.UI.Page
     protected void Button3_Click(object sender, EventArgs e)//SAVE button
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(dirProject + @"\MySite.html");//загрузка хтмл-файла сайта
+        doc.Load(SiteDir + "\\" + MainSiteName + ".html");//загрузка хтмл-файла сайта
         HtmlNode titleNode = doc.DocumentNode.SelectSingleNode("//title");//тег заголовка
         titleNode.InnerHtml = GetTitle();
 /*************************************************************************************************************/
@@ -405,7 +435,7 @@ public partial class MyPage : System.Web.UI.Page
             bannerBullet4.InnerHtml = GetTextAreaFromForm(Bullet4TextArea);
             HtmlNode bannerText = doc.DocumentNode.SelectSingleNode("//p[@class='text_on_banner']");
             bannerText.SetAttributeValue("style", "display: none");
-            doc.Save(dirProject + @"\MySite.html");
+            doc.Save(SiteDir + "\\" + MainSiteName + ".html");
         }
         else//if (RadioButtonText.Checked)
         {
@@ -414,7 +444,7 @@ public partial class MyPage : System.Web.UI.Page
             bannerText.InnerHtml = GetTextAreaFromForm(BannerTextArea);
             HtmlNode bannerBulletsBlok = doc.DocumentNode.SelectSingleNode("//ul[@class='banner_bullits']");
             bannerBulletsBlok.SetAttributeValue("style", "display: none");
-            doc.Save(dirProject + @"\MySite.html");
+            doc.Save(SiteDir + "\\" + MainSiteName + ".html");
         }
         /*************************************************************************************************************/
 
@@ -473,10 +503,10 @@ public partial class MyPage : System.Web.UI.Page
         VarNumberCardTextarea2.InnerHtml = GetTextFromHtml("//p[@id='var_num_text2']");//main text on variabling number card2
         VarNumberCardNumberTextarea3.InnerHtml = GetTextFromHtml("//p[@id='var_num_number3']");//text of variabling number on card3
         VarNumberCardTextarea3.InnerHtml = GetTextFromHtml("//p[@id='var_num_text3']");//main text on variabling number 
-        BannerCheckBox.Checked = CheckBoxChecking(fileHtmlPath, "//section[@id='banner_block']");//banner block's visibility status
-        CardImageBlockCheckBox.Checked = CheckBoxChecking(fileHtmlPath, "//section[@id='card_image_block']");//banner block's visibility status
-        CardDigitCheckBox.Checked = CheckBoxChecking(fileHtmlPath, "//section[@id='card_digital_block']");//banner block's visibility status
-        VarNumberCheckBox.Checked = CheckBoxChecking(fileHtmlPath, "//section[@id='var_num_block']");//banner block's visibility status
+        BannerCheckBox.Checked = CheckBoxChecking(FileHtmlPath, "//section[@id='banner_block']");//banner block's visibility status
+        CardImageBlockCheckBox.Checked = CheckBoxChecking(FileHtmlPath, "//section[@id='card_image_block']");//banner block's visibility status
+        CardDigitCheckBox.Checked = CheckBoxChecking(FileHtmlPath, "//section[@id='card_digital_block']");//banner block's visibility status
+        VarNumberCheckBox.Checked = CheckBoxChecking(FileHtmlPath, "//section[@id='var_num_block']");//banner block's visibility status
 
 
     }
@@ -521,7 +551,7 @@ public partial class MyPage : System.Web.UI.Page
     protected void CardImageSaveButton1_Click(object sender, EventArgs e) //SAVE-button of the first image card
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(fileHtmlPath);//загрузка хтмл-файла сайта
+        doc.Load(FileHtmlPath);//загрузка хтмл-файла сайта
         HtmlNode node = doc.DocumentNode.SelectSingleNode("//p[@id='card1']");//text of card
         node.InnerHtml = GetTextAreaFromForm(CardBlockTextArea1);
         HtmlNode headerImageCardBlockNode = doc.DocumentNode.SelectSingleNode("//h5[@id='card-title1']");//tag with header //div[@class='card-body']//h5
@@ -530,12 +560,12 @@ public partial class MyPage : System.Web.UI.Page
         {
             headerImageCardBlockNode.SetAttributeValue("style", "display: none");
         }
-        doc.Save(fileHtmlPath);
+        doc.Save(FileHtmlPath);
     }
     protected void CardImageSaveButton2_Click(object sender, EventArgs e)//SAVE-button of the second image card
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(fileHtmlPath);//загрузка хтмл-файла сайта
+        doc.Load(FileHtmlPath);//загрузка хтмл-файла сайта
         HtmlNode node = doc.DocumentNode.SelectSingleNode("//p[@id='card2']");//text of card
         node.InnerHtml = GetTextAreaFromForm(CardBlockTextArea2);
         HtmlNode headerImageCardBlockNode = doc.DocumentNode.SelectSingleNode("//h5[@id='card-title2']");//tag with header
@@ -544,12 +574,12 @@ public partial class MyPage : System.Web.UI.Page
         {
             headerImageCardBlockNode.SetAttributeValue("style", "display: none");
         }
-        doc.Save(fileHtmlPath);
+        doc.Save(FileHtmlPath);
     }
     protected void CardImageSaveButton3_Click(object sender, EventArgs e)//SAVE-button of the third image card
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(fileHtmlPath);//file of the site load
+        doc.Load(FileHtmlPath);//file of the site load
         HtmlNode node = doc.DocumentNode.SelectSingleNode("//p[@id='card3']");//text of card
         node.InnerHtml = GetTextAreaFromForm(CardBlockTextArea3);
         HtmlNode headerImageCardBlockNode = doc.DocumentNode.SelectSingleNode("//h5[@id='card-title3']");//tag with header
@@ -558,7 +588,7 @@ public partial class MyPage : System.Web.UI.Page
         {
             headerImageCardBlockNode.SetAttributeValue("style", "display: none");
         }
-        doc.Save(fileHtmlPath);
+        doc.Save(FileHtmlPath);
     }
 
     protected void CardImageBlockHeaderButton_Click(object sender, EventArgs e)
@@ -583,23 +613,23 @@ public partial class MyPage : System.Web.UI.Page
     void HtmlTextChangerWithTypograph(HtmlTextArea formTextArea, string xPath)//rewrites text from formTextArea on form to xPath in html with Lebedev's Polygraph
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(fileHtmlPath);//file of the site load
+        doc.Load(FileHtmlPath);//file of the site load
         HtmlNode node = doc.DocumentNode.SelectSingleNode(xPath);//text in html
         //node.InnerHtml = textArea.InnerText;
         node.InnerHtml = GetTextAreaFromForm(formTextArea);
-        doc.Save(fileHtmlPath);
+        doc.Save(FileHtmlPath);
     }
 
     void HtmlTextChangerWithTypograph(HtmlTextArea formTextArea1, string xPath1, HtmlTextArea formTextArea2, string xPath2)//rewrites text from formTextArea on form to xPath in html with Lebedev's Polygraph
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(fileHtmlPath);//file of the site load
+        doc.Load(FileHtmlPath);//file of the site load
         HtmlNode node = doc.DocumentNode.SelectSingleNode(xPath1);//text in html
         //node.InnerHtml = textArea.InnerText;
         node.InnerHtml = GetTextAreaFromForm(formTextArea1);
         node = doc.DocumentNode.SelectSingleNode(xPath2);
         node.InnerHtml = GetTextAreaFromForm(formTextArea2);
-        doc.Save(fileHtmlPath);
+        doc.Save(FileHtmlPath);
     }
 
     /********обработчики изменения картинок в блоке карточек с картинками*************/
