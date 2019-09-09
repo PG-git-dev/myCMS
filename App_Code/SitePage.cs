@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-/// <summary>
-/// Класс html-страницы Сводное описание для SitePage
-/// </summary>
-public class SitePage
+namespace WebSite11
 {
-    public string Name { get; set; }
-    public string Favicon { get; set; }
-    public int BlocksNumber { get; set; }
-    public string SiteDirName { get; }
-
-    public SitePage()
+    /// <summary>
+    /// Класс html-страницы Сводное описание для SitePage
+    /// </summary>
+    public class SitePage
     {
-        int i = 1;
-        this.Name = "MySite" + i;
-        SiteDirName = System.AppDomain.CurrentDomain.BaseDirectory + Name;
+        public string Name { get; set; }
+        public string Favicon { get; set; }
+        public int BlocksNumber { get; set; }
+        public string SiteDirName { get; }
 
+        public SitePage()
+        {
+            int i = 1;
+            this.Name = "MySite" + i;
+            SiteDirName = System.AppDomain.CurrentDomain.BaseDirectory + Name;
+
+        }
     }
 }

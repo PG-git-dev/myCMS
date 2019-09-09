@@ -20,7 +20,7 @@ li{
 .banner{
 	width: 100%;
 	min-height: 500px;
-	background-image: url(https://www.roscap.ru/upload/iblock/b31/mort6new.jpg);
+	background-image: url(images/mort6new.jpg);
     background-color: rgb(236, 232, 232);
     transform: matrix(1, 0, 0, 1, 0, 0);
     background-repeat: no-repeat;

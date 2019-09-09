@@ -41,17 +41,20 @@ public partial class MyPage : System.Web.UI.Page
         #endregion
         if (Request.QueryString["SiteName"] != null)
         {
-            MainSiteName = Request.QueryString["SiteName"];//получение имени сайта со стартовой страницы (Default.aspx)
-            //string templDir = "MySite_templ";
-            string SiteDir = System.AppDomain.CurrentDomain.BaseDirectory + MainSiteName;
-            ////HttpContext.Current.Server.MapPath()
-            ////System.AppDomain.CurrentDomain.BaseDirectory + "MySite\\";//директория, где будут располагаться файлы сайта
-            //    string siteTmplHtml = System.AppDomain.CurrentDomain.BaseDirectory + @"header1.html";//расположение файла сайта HTML по-умолчанию
-            //    string siteTmplCss = System.AppDomain.CurrentDomain.BaseDirectory + @"style.css";//расположение файла стилей сайта CSS по-умолчанию
-            //    string fileHtmlPath = System.AppDomain.CurrentDomain.BaseDirectory + "MySite\\MySite.html";
+           MainSiteName = Request.QueryString["SiteName"];//получение имени сайта со стартовой страницы (Default.aspx)
+            string SiteDir = System.AppDomain.CurrentDomain.BaseDirectory + MainSiteName;//директория размещения файлов сайта
+        #region старые переменные (сейчас проверки реализованы в файле Default.asxp)
+            /*           //string templDir = "MySite_templ";
+                        ////HttpContext.Current.Server.MapPath()
+                        ////System.AppDomain.CurrentDomain.BaseDirectory + "MySite\\";//директория, где будут располагаться файлы сайта
+                        //    string siteTmplHtml = System.AppDomain.CurrentDomain.BaseDirectory + @"header1.html";//расположение файла сайта HTML по-умолчанию
+                        //    string siteTmplCss = System.AppDomain.CurrentDomain.BaseDirectory + @"style.css";//расположение файла стилей сайта CSS по-умолчанию
+                        //    string fileHtmlPath = System.AppDomain.CurrentDomain.BaseDirectory + "MySite\\MySite.html";
 
-            //string siteTmplHtml = System.AppDomain.CurrentDomain.BaseDirectory + templDir + "\\" + @"MySite.html";//расположение файла сайта HTML по-умолчанию
-            //string siteTmplCss = System.AppDomain.CurrentDomain.BaseDirectory + templDir + "\\" + @"style.css";//расположение файла стилей сайта CSS по-умолчанию
+                        //string siteTmplHtml = System.AppDomain.CurrentDomain.BaseDirectory + templDir + "\\" + @"MySite.html";//расположение файла сайта HTML по-умолчанию
+                        //string siteTmplCss = System.AppDomain.CurrentDomain.BaseDirectory + templDir + "\\" + @"style.css";//расположение файла стилей сайта CSS по-умолчанию
+            */
+            #endregion
             FileHtmlPath = SiteDir + "\\" + "index.html";
             this.DataBind();
         }
@@ -102,7 +105,6 @@ public partial class MyPage : System.Web.UI.Page
         fil = MainSiteName+"\\" + "\\" + "index.html"; 
         return "window.open('" + fil + "')";
         //return "window.open('" + fileHtmlPath + "')";//посмотреть почему не работает...
-//*****************подумать вообще как отвязать от конкретного файла и папки...  абстрагировать
     }
     
 /*    public string GetBannerHeader()//заголовок банера из формы
