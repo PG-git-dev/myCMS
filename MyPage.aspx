@@ -1,26 +1,21 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyPage.aspx.cs" EnableViewStateMac="True" Inherits="MyPage"%> 
+﻿<%@ Page Title="AdministrativePage" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeFile="MyPage.aspx.cs" EnableViewStateMac="True" Inherits="MyPage"%> 
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>AdministrativePage</title> 
-    <!--   <asp:Literal runat="server" Text="<!--%#GetTitle() %>"></asp:Literal> -->
-</head>
-<body style="height: 793px">
-    <form id="form1" runat="server" enableviewstate="True" autopostback="true">
-    <div style="width: 354px; height: 793px" >
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+        <div>
         <!--<div style="background-color:darkgray" >-->
         My page<br />
         <br />
+        
         
         <asp:Button ID="Button1" runat="server" Text="Просмотр" OnClick="<%#GetSitePath() %>" Enabled="True" /> <!--OnClick="Button1_Click"--> <!--OnClientClick="window.open('header1.html')" --> <!--OnClick="<!--%#GetSitePath() %>"-->
         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" style="margin-left: 62px" Text="Добавить" />
         <br />
         <br />
         <!--</div>-->
-        <hr />
+        <hr style="width: 352px" />
         <asp:Label ID="Label1" runat="server" Text="Заголовок страницы:"></asp:Label>
         <br />
         <asp:TextBox ID="TextBox1" runat="server" Width="112px" AutoPostBack="false" Text="It is a title's text" OnPreRender="TextPreRender" MaxLength="25"></asp:TextBox>
@@ -81,15 +76,7 @@
         <asp:CheckBox ID="BannerCheckBox" runat="server" OnCheckedChanged="BlockVisibilityCheckBox_CheckedChanged" ValidationGroup="BlockVisibility" Checked="true" />
 
     </div>
-        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="False">
-            <asp:ListItem>Header</asp:ListItem>
-            <asp:ListItem>MainMenu</asp:ListItem>
-            <asp:ListItem>Menu1</asp:ListItem>
-            <asp:ListItem>Footer</asp:ListItem>
-        </asp:DropDownList>
         <br />
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
         <br />
         <hr />
         <asp:Panel ID="CardImageBlockPanel" runat="server">
@@ -306,58 +293,10 @@
         <br />
         <hr />
         <br />
-        <asp:MultiView ID="MultiView1" runat="server">
-            <asp:View ID="View1" runat="server">
-
-
-
-            </asp:View>
-        </asp:MultiView>
         <br />
         <br />
         <br />
         <br />
-        <br />
-        <asp:Panel Height="200px" Width="50%" ID="Panel1" runat="server" HorizontalAlign="Justify">
-            <!DOCTYPE HTML>
-            <link href="Style.css" rel="stylesheet" type="text/css" />
-            <!--Это по-хорошему нужно задаваить программно (именно текст между тегами). Это то, что отображается в заголовке вкладки.--><title2>page</title2>
-            <!--Сюда нужно закидывать программно иконочку (при надобности программно обрезать ее до нужного размера). Это фавиконка во вкладке.-->
-            <link href="https://ipoteka.roscap.ru/wp-content/uploads/2017/03/cropped-favicon-32x32.png" rel="icon" sizes="32x32" />
-            <!--Первый варик хедера-->
-            <!--Вот сюда нужно подпихивать другие варики блоков. Пока надо подумать, как это будет все смотреться и как к этому подрубать стили...-->
-            <!-- 	<div class="wrapper">
-		<header class="header">Header</header>
-		<article class="main">
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>  
-		</article>
-		<aside class="aside aside-1">Aside 1</aside>
-		<aside class="aside aside-2">Aside 2</aside>
-		<footer class="footer">Footer</footer> -->
-            <style>
-                header {
-                    background: #262626;  
-                }
-                main {
-                    text-align: left;
-                    background: #d21f1f;
-                }
-                footer {
-                    background: #f0f0f0;
-                }
-            </style>
-            <header class="header2">
-                Header</header>
-            <article class="main2">
-                <p>
-                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-            </article>
-            <footer class="footer2">
-                Footer</footer>
-            <br />
-            <br />
-        </asp:Panel>
-    </form>
-
-</body>
-</html>
+            </ContentTemplate>
+    </asp:UpdatePanel>
+</asp:Content>

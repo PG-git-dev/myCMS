@@ -3,16 +3,16 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p class="lead">
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Создать сайт" Width="136px" />
-        </p>
-        
-        <p><a href="MyPage.aspx" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        <h1>Конструктор одностраничных сайтов</h1>
+        <p class="lead">Инструмент для создания одностраничных веб-сайтов на основе HTML, CSS и JavaScript.</p>
+            <div class="col-md-12 col-xs-6">
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Создать сайт" Width="212px" Height="111px" />
+                <asp:Button ID="Button2" runat="server" Text="Выбрать сайт" Width="212px" Height="111px" OnClick="Button2_Click" />
+            </div>
+<!--        <p><a href="MyPage.aspx" class="btn btn-primary btn-lg">Learn more &raquo;</a></p> -->
     </div>
 
-    <div class="row">
+<!--    <div class="row">
         <div class="col-md-4">
             <h2>Getting started</h2>
             <p>
@@ -42,4 +42,5 @@
             </p>
         </div>
     </div>
+-->
 </asp:Content>

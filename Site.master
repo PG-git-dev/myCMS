@@ -7,13 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - мое приложение ASP.NET</title>
+    <title><%: Page.Title %> - Landings Constructor</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/myfavic2.jpg" rel="shortcut icon" type="image/x-icon" />
 
 </head>
 <body>
@@ -47,7 +47,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Имя приложения</a>
+                    <a class="navbar-brand" runat="server" href="~/">Landings Constructor</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -79,7 +79,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - мое приложение ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Landing Constructor</p>
             </footer>
         </div>
     </form>

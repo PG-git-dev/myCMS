@@ -42,7 +42,7 @@ public partial class MyPage : System.Web.UI.Page
         if (Request.QueryString["SiteName"] != null)
         {
            MainSiteName = Request.QueryString["SiteName"];//получение имени сайта со стартовой страницы (Default.aspx)
-            string SiteDir = System.AppDomain.CurrentDomain.BaseDirectory + MainSiteName;//директория размещения файлов сайта
+           SiteDir = System.AppDomain.CurrentDomain.BaseDirectory + MainSiteName;//директория размещения файлов сайта
         #region старые переменные (сейчас проверки реализованы в файле Default.asxp)
             /*           //string templDir = "MySite_templ";
                         ////HttpContext.Current.Server.MapPath()
@@ -55,7 +55,7 @@ public partial class MyPage : System.Web.UI.Page
                         //string siteTmplCss = System.AppDomain.CurrentDomain.BaseDirectory + templDir + "\\" + @"style.css";//расположение файла стилей сайта CSS по-умолчанию
             */
             #endregion
-            FileHtmlPath = SiteDir + "\\" + "index.html";
+            FileHtmlPath = SiteDir + "\\index.html";
             this.DataBind();
         }
         else
@@ -85,11 +85,11 @@ public partial class MyPage : System.Web.UI.Page
 
     }
     
-    public string GetTitle()//заголовок страницы из приложения (то, что размещено в TextBoxe)
+    public string GetTitle()//заголовок страницы из приложения (то, что размещено в TextBox'e)
     {
         return TextBox1.Text;
     }
-    public string GetSitePath()//возвращает вызов нового окна с сайтом
+    public string GetSitePath()//возвращает значение для атрибута OnClick MyPages.aspx (т.е. вызов нового окна с сайтом)
     {
         //MainSiteName = Request.QueryString["SiteName"];
 
@@ -102,7 +102,7 @@ public partial class MyPage : System.Web.UI.Page
         //fil = dirProject + "\\MySite1.html";
         //fil = "http://www.yandex.ru";
         //fil = FileHtmlPath;
-        fil = MainSiteName+"\\" + "\\" + "index.html"; 
+        fil = MainSiteName+"\\" + "\\index.html"; 
         return "window.open('" + fil + "')";
         //return "window.open('" + fileHtmlPath + "')";//посмотреть почему не работает...
     }
@@ -405,7 +405,7 @@ public partial class MyPage : System.Web.UI.Page
     protected void Button3_Click(object sender, EventArgs e)//SAVE button
     {
         HtmlDocument doc = new HtmlDocument();
-        doc.Load(SiteDir + "\\" + MainSiteName + ".html");//загрузка хтмл-файла сайта
+        doc.Load(SiteDir + "\\index.html");//загрузка хтмл-файла сайта
         HtmlNode titleNode = doc.DocumentNode.SelectSingleNode("//title");//тег заголовка
         titleNode.InnerHtml = GetTitle();
 /*************************************************************************************************************/
@@ -437,7 +437,7 @@ public partial class MyPage : System.Web.UI.Page
             bannerBullet4.InnerHtml = GetTextAreaFromForm(Bullet4TextArea);
             HtmlNode bannerText = doc.DocumentNode.SelectSingleNode("//p[@class='text_on_banner']");
             bannerText.SetAttributeValue("style", "display: none");
-            doc.Save(SiteDir + "\\" + MainSiteName + ".html");
+            doc.Save(SiteDir + "\\index.html");
         }
         else//if (RadioButtonText.Checked)
         {
@@ -446,7 +446,7 @@ public partial class MyPage : System.Web.UI.Page
             bannerText.InnerHtml = GetTextAreaFromForm(BannerTextArea);
             HtmlNode bannerBulletsBlok = doc.DocumentNode.SelectSingleNode("//ul[@class='banner_bullits']");
             bannerBulletsBlok.SetAttributeValue("style", "display: none");
-            doc.Save(SiteDir + "\\" + MainSiteName + ".html");
+            doc.Save(SiteDir + "\\index.html");
         }
         /*************************************************************************************************************/
 
