@@ -1,22 +1,26 @@
 ﻿<!DOCTYPE HTML>
 <html>
- <head>
-     <meta charset="utf-8">
- 	<link rel="stylesheet" type="text/css" href="fonts.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="js/bootstrap.min.js"></script>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="fonts.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
 
- 	<!--Это по-хорошему нужно задаваить программно (именно текст между тегами). Это то, что отображается в заголовке вкладки.-->
- 	<title>ThisIsMySiteName</title>
+    <link rel="stylesheet" type="text/css" media="all" href="fancybox/jquery.fancybox.css">
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="fancybox/jquery.fancybox.js"></script>
 
- 	<!--Сюда нужно закидывать программно иконочку (при надобности программно обрезать ее до нужного размера). Это фавиконка во вкладке.-->
- 	
-     <link rel="icon" href="" sizes="32x32">
+    <!--Это по-хорошему нужно задаваить программно (именно текст между тегами). Это то, что отображается в заголовке вкладки.-->
+    <title>ThisIsMySiteName</title>
 
- </head>
+    <!--Сюда нужно закидывать программно иконочку (при надобности программно обрезать ее до нужного размера). Это фавиконка во вкладке.-->
+
+    <link rel="icon" href="" sizes="32x32">
+
+</head>
 
  <!--Первый варик хедера-->
  <body>
@@ -49,24 +53,57 @@
 
 <section id='banner_block' class="banner_container" style="display: block; background-color: #f1f1f1">
   <div class="banner">
-    <div class="banner_text"><!--И заголовок, и текст должны гнаться через типограф. Заголовок может занимать не больше 2х строк. Одна строка - максимум 25 символов. Параграф не более 3х строк (или 4х буллитов) для строки максимальная длина 30 символов, для буллитов 25-->
-      <h1 id="banner_title">Это заголовок банера из&#160;&#171;формы&#187;&#160;&#8212; как-то так...
-</h1> <!--когда добавятся файлы сделать побольше line-height для h1. Его не может не быть-->
-      <p class="text_on_banner" style="display: block">А&#160;это текст на&#160;баннере. Он&#160;может занимать несколько строк
-</p>
-      <ul class="banner_bullits" style="display: none">
-        <li><span id="banner_bul1" style="color: #212529;" cols="25" maxlength="50">Это текст из&#160;&#171;буллита1&#187;
-</span></li>
-        <li><span id="banner_bul2" style="color: #212529;" cols="25" maxlength="50">А&#160;это из&#160;биллита &#171;2&#187;
-</span></li>
-        <li><span id="banner_bul3" style="color: #212529;" cols="25" maxlength="50">а&#160;здесь ещё нет текста	</span></li>
-        <li><span id="banner_bul4" style="color: #212529;" cols="25" maxlength="50">и&#160;здесь тоже
-</span></li>
-      </ul>
-      <a href="#"><!--тут нужно сделать возможность делать ссылку. Либо якорнул куда-то в текст, либо на сторонний ресурс-->
-      <button class="banner_btn">Заказать</button><!--ее может не быть-->
-      </a>
-    </div>
+      <div class="banner_text">
+          <!--И заголовок, и текст должны гнаться через типограф. Заголовок может занимать не больше 2х строк. Одна строка - максимум 25 символов. Параграф не более 3х строк (или 4х буллитов) для строки максимальная длина 30 символов, для буллитов 25-->
+          <h1 id="banner_title">
+              Это заголовок банера из&#160;&#171;формы&#187;&#160;&#8212; как-то так...
+          </h1> <!--когда добавятся файлы сделать побольше line-height для h1. Его не может не быть-->
+          <p class="text_on_banner" style="display: block">
+              А&#160;это текст на&#160;баннере. Он&#160;может занимать несколько строк
+          </p>
+          <ul class="banner_bullits" style="display: none">
+              <li>
+                  <span id="banner_bul1" style="color: #212529;" cols="25" maxlength="50">
+                      Это текст из&#160;&#171;буллита1&#187;
+                  </span>
+              </li>
+              <li>
+                  <span id="banner_bul2" style="color: #212529;" cols="25" maxlength="50">
+                      А&#160;это из&#160;биллита &#171;2&#187;
+                  </span>
+              </li>
+              <li><span id="banner_bul3" style="color: #212529;" cols="25" maxlength="50">а&#160;здесь ещё нет текста	</span></li>
+              <li>
+                  <span id="banner_bul4" style="color: #212529;" cols="25" maxlength="50">
+                      и&#160;здесь тоже
+                  </span>
+              </li>
+          </ul>
+          <!--<a href="#inline" class="modalbox">-->
+              <!--тут нужно сделать возможность делать ссылку. Либо якорнул куда-то в текст, либо на сторонний ресурс-->
+              <button class="banner_btn" onclick="" style="display: block;">Заказать</button><!--ее может не быть-->
+          <!--</a>-->
+
+
+
+
+          <div id="inline">
+              <h2>Онлайн заявка</h2>
+              <form id="contact" action="#" method="post" name="contact">
+                  <input id="name" class="txt" name="name" type="name" placeholder="Ваше имя">
+                  <input id="phone" class="txt" name="phone" type="phone" placeholder="Ваш телефон">
+                  <input id="email" class="txt" name="email" type="email" placeholder="Ваш e-mail">
+                  <textarea id="msg" class="txtarea" name="msg" placeholder="Ваше сообщение:"></textarea>
+                  <button id="send">Отправить</button>
+              </form>
+          </div>
+
+
+
+
+
+
+      </div>
   </div>
 </section>
 <section id='card_image_block' class="card_block" style="display: block; background-color: #ffffff"><!--Блок картинок-->
@@ -200,6 +237,71 @@
 		</tr>
 	</table>
 </section>
+
+
+<script type="text/javascript">
+  function validateEmail(email) { 
+    var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return reg.test(email);
+  }
+
+  $(document).ready(function() {
+    $(".modalbox").fancybox();
+    $("#contact").submit(function() { return false; });
+    $("#send").on("click", function(){
+      var emailval  = $("#email").val();
+      var namevl  = $("#name").val();
+      var phonevl  = $("#phone").val();
+      var msgval    = $("#msg").val();
+      var msglen    = msgval.length;
+      var mailvalid = validateEmail(emailval);
+
+      if(mailvalid == false) {
+        $("#email").addClass("error");
+      }
+      else if(mailvalid == true){
+        $("#email").removeClass("error");
+      }
+  if(mailvalid == false) {
+        $("#name").addClass("error");
+      }
+      else if(mailvalid == true){
+        $("#name").removeClass("error");
+      }
+      if(mailvalid == false) {
+        $("#phone").addClass("error");
+      }
+      else if(mailvalid == true){
+        $("#phone").removeClass("error");
+      }
+      if(msglen < 4) {
+        $("#msg").addClass("error");
+      }
+      else if(msglen >= 4){
+        $("#msg").removeClass("error");
+      }
+      
+      if(mailvalid == true && msglen >= 4) {
+        // если обе проверки пройдены
+        // сначала мы скрываем кнопку отправки
+        $("#send").replaceWith("<em>отправка...</em>");
+        $.ajax({
+          type: 'POST',
+          url: 'sendmessage.php',
+          data: $("#contact").serialize(),
+          success: function(data) {
+            if(data == "true") {
+              $("#contact").fadeOut("fast", function(){
+                $(this).before("<p><strong>Успешно! Ваше сообщение отправлено  :)</strong></p>");
+                setTimeout("$.fancybox.close()", 1000);
+              });
+            }
+          }
+        });
+      }
+    });
+  });
+</script>
 
  </body>
 </html>

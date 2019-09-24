@@ -1,37 +1,63 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/AdminPage.Master" AutoEventWireup="true" CodeFile="CommonProp.aspx.cs" Inherits="CommonProp" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-   
-    <div class="class1">
-        <p>Класс 1</p>
 
-        <p>
-            <asp:Calendar ID="Calendar1" runat="server" Height="200px" Width="220px" BackColor="#FFFFCC" BorderColor="#FFCC66" BorderWidth="1px" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#663399" ShowGridLines="True">
-                <DayHeaderStyle BackColor="#FFCC66" Font-Bold="True" Height="1px" />
-                <NextPrevStyle Font-Size="9pt" ForeColor="#FFFFCC" />
-                <OtherMonthDayStyle ForeColor="#CC9966" />
-                <SelectedDayStyle BackColor="#CCCCFF" Font-Bold="True" />
-                <SelectorStyle BackColor="#FFCC66" />
-                <TitleStyle BackColor="#990000" Font-Bold="True" Font-Size="9pt" ForeColor="#FFFFCC" />
-                <TodayDayStyle BackColor="#FFCC66" ForeColor="White" />
-            </asp:Calendar>
-        </p>
 
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        </asp:UpdatePanel>
-
+    <div class="bs-docs-header-request" id="content" tabindex="-1"> 
+        <h1>Заявка на оказание услуг</h1> 
     </div>
-<div class="class2">
-        <p><b>Класс 2</b></p>
-        <p>
-            <asp:Calendar ID="Calendar2" runat="server" Height="500px" Width="500px"></asp:Calendar>
-        </p>
 
-    </div><div id="class3">
-        <p><b>Класс 3</b></p>
-        <p>
-            <asp:Calendar ID="Calendar3" runat="server" Height="500px" Width="500px"></asp:Calendar>
-        </p>
-
+    <div class="box_request">
+        <div >
+            <label>Имя</label>
+            <br/>
+            <asp:TextBox ID="TextBox1" runat="server" class="little_input_request" placeholder="Как к вам обращаться"></asp:TextBox>
+        </div>
+        <div >
+            <label>Телефон</label>
+            <br/>
+            <asp:TextBox ID="TextBox2" runat="server" class="phone_mask little_input_request" placeholder="Ваш номер телефона"></asp:TextBox>
+        </div>
+        <div >
+            <label>Комментарий</label>
+            <br/>
+            <asp:TextBox ID="TextBox3" runat="server" class="big_input_request" placeholder="Комментарий"></asp:TextBox>
+        </div>
+        <div>
+            <asp:Button ID="Button1" runat="server" Text="Отправить" class="usual_btn_request" OnClick="Button1_Click" />
+        </div>
     </div>
+        <script>
+window.addEventListener("DOMContentLoaded", function() {
+function setCursorPosition(pos, elem) {
+    elem.focus();
+    if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
+    else if (elem.createTextRange) {
+        var range = elem.createTextRange();
+        range.collapse(true);
+        range.moveEnd("character", pos);
+        range.moveStart("character", pos);
+        range.select()
+    }
+}
+
+function mask(event) {
+    var matrix = "+7 (___) ___-__-__",
+        i = 0,
+        def = matrix.replace(/\D/g, ""),
+        val = this.value.replace(/\D/g, "");
+    if (def.length >= val.length) val = def;
+    this.value = matrix.replace(/./g, function(a) {
+        return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a
+    });
+    if (event.type == "blur") {
+        if (this.value.length == 2) this.value = ""
+    } else setCursorPosition(this.value.length, this)
+};
+    var input = document.querySelector("#MainContent_TextBox2");
+    input.addEventListener("input", mask, false);
+    input.addEventListener("focus", mask, false);
+    input.addEventListener("blur", mask, false);
+});
+  </script>
 </asp:Content>

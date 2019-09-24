@@ -162,7 +162,7 @@ button,
 input,
 select,
 textarea {
-  margin: 0 0 0 219px;
+  //margin: 0 0 0 219px;
   font-family: inherit;
   font-size: 100%;
 }
@@ -401,7 +401,8 @@ hr {
 }
 
 p {
-  margin: 0 0 10px;
+    margin: 0 0 10px;
+    /*width: 1337px;*/
 }
 
 .lead {
@@ -521,12 +522,12 @@ h2,
 
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 32px;
 }
 
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 24px;
 }
 
 h5,

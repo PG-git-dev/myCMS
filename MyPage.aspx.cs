@@ -27,6 +27,29 @@ public partial class MyPage : System.Web.UI.Page
     //string siteTmplCss = System.AppDomain.CurrentDomain.BaseDirectory + @"style.css";//расположение файла стилей сайта CSS по-умолчанию
     //string fileHtmlPath = System.AppDomain.CurrentDomain.BaseDirectory + "MySite\\MySite.html"; 
 
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        BannerCheckBox.InputAttributes.Add("style", "display: none;");
+        BannerCheckBox.InputAttributes.Add("OnCheckedChanged", "BlockVisibilityCheckBox_CheckedChanged");
+        BannerCheckBox.InputAttributes.Add("ValidationGroup", "BlockVisibility");
+        BannerCheckBox.InputAttributes.Add("Checked", "true");
+        
+        RadioButtonText.InputAttributes.Add("class", "radio");
+        //RadioButtonText.InputAttributes.Add("name", "radio-grp");
+        RadioButtonText.InputAttributes.Add("type", "radio");
+        RadioButtonText.InputAttributes.Add("GroupName", "BannerTextStyle");
+        RadioButtonText.InputAttributes.Add("AutoPostBack", "true");
+        RadioButtonText.InputAttributes.Add("OnCheckedChanged", "RadioButton_CheckedChanged");
+        //RadioButtonText.InputAttributes.Add("Checked", "True");
+
+        RadioButtonBullet.InputAttributes.Add("class", "radio");
+        //RadioButtonBullet.InputAttributes.Add("name", "radio-grp");
+        RadioButtonBullet.InputAttributes.Add("type", "radio");
+        RadioButtonBullet.InputAttributes.Add("GroupName", "BannerTextStyle");
+        RadioButtonBullet.InputAttributes.Add("AutoPostBack", "true");
+        RadioButtonBullet.InputAttributes.Add("OnCheckedChanged", "RadioButton_CheckedChanged");
+        RadioButtonBullet.InputAttributes.Add("Checked", "true");
+    }
     protected void Page_Load(object sender, EventArgs e) //загрузка страницы
     {
         #region Здесь была проверка существования каталога сайта и файлов в нём
@@ -62,7 +85,6 @@ public partial class MyPage : System.Web.UI.Page
         {
             Response.Redirect("~/Default.aspx");
         }
-
     }
     /*    private string PathHTML()
         {
@@ -177,7 +199,7 @@ public partial class MyPage : System.Web.UI.Page
         return node.InnerHtml;
     }
 
-    protected void Button1_Click(object sender, EventArgs e)//empty
+    protected void Button1_Click(object sender, EventArgs e)//"Просмотр"
     {
         //Process.Start(dirProject + @"\MySite.html");
         //Process.Start(HttpContext.Current.Server.MapPath("MySite.html"));
@@ -637,7 +659,9 @@ public partial class MyPage : System.Web.UI.Page
     /********обработчики изменения картинок в блоке карточек с картинками*************/
     protected void ButtonCard1_Click(object sender, EventArgs e)
     {
-        ChangeImage(FileUploadImageCardBlock1, "//img[@id='imageCard1']", @"src");
+
+        if(FileUploadImageCardBlock1.HasFile)
+            ChangeImage(FileUploadImageCardBlock1, "//img[@id='imageCard1']", @"src");
     }
 
     protected void ButtonCard2_Click(object sender, EventArgs e)

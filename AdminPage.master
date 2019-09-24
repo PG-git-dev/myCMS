@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
     <title><%: Page.Title %> - Landings Constructor</title>
 
     <asp:PlaceHolder runat="server">
@@ -39,7 +40,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <!--<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -62,14 +63,14 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="container body-content">
+        </div>-->
+        <div class="body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
+<%--            <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Landing Constructor</p>
-            </footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Landing Constructor</br>All rights and lefts</br>Gudkov P.</p>
+            </footer>--%>
         </div>
     </form>
 </body></html>

@@ -1,7 +1,7 @@
 body{
   margin: 0px;
   display: block;
-/*  padding: 2em; */
+    height: 7px;
 }
 .wrapper {
   display: flex;  

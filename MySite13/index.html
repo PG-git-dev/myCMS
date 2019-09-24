@@ -1,0 +1,207 @@
+﻿<!DOCTYPE HTML>
+<html>
+ <head>
+     <meta charset="utf-8">
+ 	<link rel="stylesheet" type="text/css" href="fonts.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+ 	<!--Это по-хорошему нужно задаваить программно (именно текст между тегами). Это то, что отображается в заголовке вкладки.-->
+ 	<title>Испытательный сайт</title>
+
+ 	<!--Сюда нужно закидывать программно иконочку (при надобности программно обрезать ее до нужного размера). Это фавиконка во вкладке.-->
+ 	
+     <link rel="icon" href="Images\cropped-favicon-32x32.png" sizes="32x32">
+
+ </head>
+
+ <!--Первый варик хедера-->
+ <body>
+ 	<!--Вот сюда нужно подпихивать другие варики блоков. Пока надо подумать, как это будет все смотреться и как к этому подрубать стили...-->
+ 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+   	<div class="menu_logo">
+		<a href="/"><img src="images/roscap-logo.svg" alt="Банк Российский Капитал"></a>
+	</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+          <li class="nav-item active">
+              <a class="nav-link" href="#banner">Banner</a> <!--все пункты меню должны уметь меняться. И текст, и ссылки, и количество. Максимальное количество, пусть пока 5. Максимальная длина одного пункта пусть 13 символов. Минимальная пусть 4 символа. Если вариант без меню, должны убираться все пункты меню, оставаться телефон и лого кнопка, которая чуть выше тоже должна убрираться, она для мобильной версии. Ее я потом попилю. Сначала с этим бы совладать.-->
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="#card_image_block">Card Image Block</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="#card_digital_block">Card Digital Block</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="#var_num_block">Var Num Block</a>
+          </li>
+      </ul>
+  </div>
+  <a class="menu_phone" href="tel:+78001234567" rel="nofollow">8 800 123-45-67</a>
+</nav>
+
+<section id='banner_block' class="banner_container" style="display: none; background-color: #ffffff">
+  <div class="banner" style="background-image: url(images/mort6new.jpg);">
+    <div class="banner_text"><!--И заголовок, и текст должны гнаться через типограф. Заголовок может занимать не больше 2х строк. Одна строка - максимум 25 символов. Параграф не более 3х строк (или 4х буллитов) для строки максимальная длина 30 символов, для буллитов 25-->
+      <h1 id="banner_title">Это заголовок банера из&#160;&#171;формы&#187;&#160;&#8212; как-то так...
+</h1> <!--когда добавятся файлы сделать побольше line-height для h1. Его не может не быть-->
+      <p class="text_on_banner" style="display: none">А&#160;это текст на&#160;баннере. Он&#160;может занимать несколько строк
+</p>
+      <ul class="banner_bullits" style="display: block">
+        <li><span id="banner_bul1" style="color: #212529;" cols="25" maxlength="30">Это текст из&#160;&#171;буллита1&#187;
+</span></li>
+        <li><span id="banner_bul2" style="color: #212529;" cols="25" maxlength="50">А&#160;это из&#160;буллита &#171;2&#187;
+</span></li>
+        <li><span id="banner_bul3" style="color: #212529;" cols="25" maxlength="50">а&#160;здесь ещё нет текста	</span></li>
+        <li><span id="banner_bul4" style="color: #212529;" cols="25" maxlength="50">и&#160;здесь тоже
+</span></li>
+      </ul>
+      <a href="../CommonProp.aspx"><!--тут нужно сделать возможность делать ссылку. Либо якорнул куда-то в текст, либо на сторонний ресурс-->
+      <button class="banner_btn">Заказать</button><!--ее может не быть-->
+      </a>
+    </div>
+  </div>
+</section>
+<section id='card_image_block' class="card_block" style="display: block; background-color: #ffffff;"><!--Блок картинок-->
+	<h2 id="card_image_block_header">Заголовок блока с&#160;карточками
+</h2><!--пусть пока 30 символов-->
+	<div class="card-deck">
+        <div class="card col-xs-3">
+            <img class="card-img-top" id="imageCard1" src="Images\myfavic2.jpg" alt="Card1 image cap"> <!--height="100%" width="100%" было бы круто придумать обрезалку для картинок. чтоб типа загоняешь в рамку нужного размера, подгоняешь, обрезаешь и оно сразу вставляется в нужный блок. Это прям огонь бы был...-->
+            <div class="card-body">
+                <h5 class="card-title" id="card-title1" style="display: block">Заголовок карточки
+</h5><!--Максимум пусть 25 символов. Может отсутствовать. Но если отсутствует на одной карточке - должен отсутствовать на всех-->
+                <p class="card-text" id="card1">Текст в&#160;карточке...
+</p> <!--Не может отсутствовать, макс длина 230 сиволов-->
+            </div>
+        </div>
+  <div class="card col-xs-3">
+    <img class="card-img-top" id="imageCard2" src="Images\blah.jpg" alt="Card2 image cap">
+    <div class="card-body">
+      <h5 class="card-title" id="card-title2" style="display: block">Заголовок карточки</h5>
+      <p class="card-text" id="card2">22. Описание чего-то там очень интересного. Бла бла бла бла бла бла блаааааа</p>
+    </div>
+  </div>
+  <div class="card col-xs-3">
+    <img class="card-img-top" id="imageCard3" src="Images\blah.jpg" alt="Card3 image cap">
+    <div class="card-body">
+      <h5 class="card-title" id="card-title3" style="display: block">Заголовок карточки</h5>
+      <p class="card-text" id="card3">Это карточка 333. Описание чего-то там очень интересного. Бла бла бла бла бла бла блаааааа</p>
+    </div>
+</div>
+</div>
+</section>
+
+<!--Аналогичный блок, только с циферками и без заголовков-->
+<section id='card_digital_block' class="card_digital_block" style="display: block; background-color: #ffffff"> <!--еще одна важная деталь. Секции должны идти по очереди: белая, серая, белая и тд. Лучше это не давать задавать пользователю. Было бы хорошо, если бы прога сама бекграунд делала через один секшн-->
+	<h2 id="card_digit_block_header">А&#160;тут типа заголовок &#171;блока с&#160;циферками&#187;
+</h2><!--пусть пока 30 символов-->
+	<div class="card-deck">
+  <div class="card col-xs-3">
+  	<p class="card_number">1</p>
+    <div class="card-body">
+      <p id="card_digit1" class="card-text">Первая цифровая к&#160;Описание чего-то там очень интересного. Бла бла бла бла бла бла блаааааа
+</p> <!--Не может отсутствовать, макс длина 230 сиволов-->
+    </div>
+  </div>
+  <div class="card col-xs-3">
+    <p class="card_number">2</p>
+    <div class="card-body">
+      <p id="card_digit2" class="card-text">Описание чего-то там очень интересного. Бла бла бла бла бла бла блаааааа</p>
+    </div>
+  </div>
+  <div class="card col-xs-3">
+    <p class="card_number">3</p>
+    <div class="card-body">
+      <p id="card_digit3" class="card-text">Описание чего-то там очень интересного. Бла бла бла бла бла бла блаааааа</p>
+    </div>
+</div>
+</div>
+</section>
+
+<section id='var_num_block' class="var_num_block" style="display: block; background-color: #f1f1f1"> <!--такая же срань, как предыдущая, только тут можно циферки менять... это для подобных блоков https://ipoteka.roscap.ru/#application-->
+	<h2 id="var_num_card_block">А тут типа заголовок блока</h2><!--пусть пока 30 символов-->
+	<div class="card-deck">
+  <div class="card col-xs-3">
+  	<p id="var_num_number1" class="card_btxt">24 года</p>
+    <div class="card-body">
+      <p id="var_num_text1" class="card-text">Описание чего-то там очень интересного. Бла бла бла бла бла бла блаааааа</p> <!--Не может отсутствовать, макс длина 230 сиволов-->
+    </div>
+  </div>
+  <div class="card col-xs-3">
+    <p id="var_num_number2" class="card_btxt">365 дней
+</p>
+    <div class="card-body">
+      <p id="var_num_text2" class="card-text">Описание чего-то там очень интересного. Бла бла бла бла бла бла блаааааа
+</p>
+    </div>
+  </div>
+  <div class="card col-xs-3">
+    <p id="var_num_number3" class="card_btxt">&#8470;&#160;333 &#171;часа&#187;
+</p>
+    <div class="card-body">
+      <p id="var_num_text3" class="card-text">Описание чего-то там очень интересного. Бла бла бла бла бла бла блаааааа
+</p>
+    </div>
+</div>
+</div>
+</section>
+
+
+<section class="table_section" id="table_section" style="display: block; background-color: #f1f1f1">
+	<h3>Заголовок таблицы</h3><!--Заголовок таблицы. Его может не быть. Если есть мксимум 25 символов.-->
+	<table>
+		<tr>
+			<th>Заголовок столбца 1</th>
+			<th>Заголовок столбца 2</th>
+			<th>Заголовок столбца 3</th>
+			<th>Заголовок столбца 4</th>
+		</tr>
+		<tr>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+		</tr>
+		<tr>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+		</tr>
+		<tr>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+		</tr>
+		<tr>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+		</tr>
+		<tr>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+		</tr>
+		<tr>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+			<td>Значение 1</td>
+		</tr>
+	</table>
+</section>
+
+ </body>
+</html>

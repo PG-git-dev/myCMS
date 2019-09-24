@@ -2,14 +2,27 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>Конструктор одностраничных сайтов</h1>
-        <p class="lead">Инструмент для создания одностраничных веб-сайтов на основе HTML, CSS и JavaScript.</p>
+   <!--<div class="jumbotron">
+        <h1>Конструктор одностраничных сайтов АКБ "Российский Капитал" (ПАО)</h1>
+        <p class="lead">Выберете необходимую опцию</p>
             <div class="col-md-12 col-xs-6">
                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Создать сайт" Width="212px" Height="111px" />
                 <asp:Button ID="Button2" runat="server" Text="Выбрать сайт" Width="212px" Height="111px" OnClick="Button2_Click" />
             </div>
-<!--        <p><a href="MyPage.aspx" class="btn btn-primary btn-lg">Learn more &raquo;</a></p> -->
+<!--        <p><a href="MyPage.aspx" class="btn btn-primary btn-lg">Learn more &raquo;</a></p> 
+    </div>-->
+
+
+    <div class="bs-docs-header" id="content" tabindex="-1"> 
+        <h1>Конструктор одностраничных сайтов</h1> 
+    </div>
+
+    <div>
+        <div class="box_buttons">
+            <p>Выберите необходимую опцию</p> 
+                <asp:Button class="main_button" ID="Button4" runat="server" Text="Выбрать сайт" OnClientClick="window.open('SiteLoadPage')" />
+                <asp:Button class="main_button"  ID="Button3" runat="server" OnClick="Button1_Click" Text="Создать сайт"/>
+            </div>
     </div>
 
 <!--    <div class="row">

@@ -26,6 +26,7 @@ public partial class _Default : Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        SitePage sp = new SitePage("MySite");
+        //SitePage sp = new SitePage("MySite");
+
     }
 }

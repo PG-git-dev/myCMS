@@ -11,7 +11,7 @@
 </head>
 <body>
 	<form id="ExampleForm" method="post" runat="server">
-		<asp:TextBox TextMode="MultiLine" Width="300" Height="200" Runat="server" ID="Input" Text='"Âû âñå åùå      êîå-êàê âåðñòàåòå â "Âîðäå"?   - Òîãäà ìû èäåì ê âàì ! "'/>
+		<asp:TextBox TextMode="MultiLine" Width="300" Height="200" Runat="server" ID="Input" Text='"Ð’Ñ‹ Ð²ÑÐµ ÐµÑ‰Ðµ      ÐºÐ¾Ðµ-ÐºÐ°Ðº Ð²ÐµÑ€ÑÑ‚Ð°ÐµÑ‚Ðµ Ð² "Ð’Ð¾Ñ€Ð´Ðµ"?   - Ð¢Ð¾Ð³Ð´Ð° Ð¼Ñ‹ Ð¸Ð´ÐµÐ¼ Ðº Ð²Ð°Ð¼ ! "'/>
         <p>
 			<asp:Button Runat="server" ID="Proceed" OnClick="Proceed_OnClick" Text="ProcessText"/>
 		</p>		

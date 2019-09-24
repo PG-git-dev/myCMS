@@ -10,15 +10,15 @@ public partial class Account_Login : Page
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";//отсылка к Register.aspx
-            OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];//ReturnUrl - видимо url того сайта, на котором пользователь хочет авторизоваться
+        OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];//ReturnUrl - видимо url того сайта, на котором пользователь хочет авторизоваться
         var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
-            if (!String.IsNullOrEmpty(returnUrl))
-            {
-                RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
-            }
+        if (!String.IsNullOrEmpty(returnUrl))
+        {
+            RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
         }
+    }
 
-        protected void LogIn(object sender, EventArgs e)//обработчик нажатия на кнопку "вход"
+    protected void LogIn(object sender, EventArgs e)//обработчик нажатия на кнопку "вход"
         {
             if (IsValid)
             {
